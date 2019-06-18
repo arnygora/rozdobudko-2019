@@ -11,3 +11,12 @@ function findLongestWord(inputString) {
     return replaceLetterInWord()
 }
 console.log(findLongestWord(string));
+
+// Определить, является ли строка палиндромом.
+function checkIsStringPalindrom(inputString) {
+    let reversedString = inputString.split('').reverse().join('');
+    return inputString === reversedString;
+}
+console.log(checkIsStringPalindrom('ene'));
+console.log(checkIsStringPalindrom('bene'));
+console.log(checkIsStringPalindrom('raba'));
