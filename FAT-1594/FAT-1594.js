@@ -17,20 +17,25 @@ function calculate(operator) {
 
         return function getSecondOperand(secondOperand) {
             let result = 0;
-            switch (operator) {
-                case "+" :
+            const operation = {
+                addition() {
                     result = firstOperand + secondOperand;
-                    break;
-                case "*" :
-                    result = firstOperand * secondOperand;
-                    break;
-                default:
-                    console.log(`${firstOperand}${operation}${secondOperand}`);
+                },
+                multiple() {
+                    result = firstOperand * secondOperand
+                }
+            };
+            if (operator === "+") {
+                operation.addition()
+                // return operation.addition()  // явно не зовсім розумію коли треба писати return а коли ні
+            } else {
+                operation.multiple()
             }
             return result;
         }
     }
 }
+
 console.log(calculate('+')(1)(2));
 console.log(calculate('*')(2)(3));
 //
@@ -46,6 +51,7 @@ function sum(a) {
     };
     return showResult;
 }
+
 console.log(sum(1));
 console.log(sum(1)(2));
 console.log(sum(3)(4)(5));
