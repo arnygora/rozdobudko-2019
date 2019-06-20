@@ -1,24 +1,23 @@
 // https://github.com/vvscode/js--interview-questions/blob/master/topics/closures.md
 // (fix with let variable)
 for (let i = 0; i < 5; i++) {
-    setTimeout(function () {
-        console.log(i);
-    }, 1000);
+    setTimeout(function (i) {
+        return function () {
+            console.log(i);
+        }
+    }(i), 1000);
 }
 
 // Create code for next conditions
 // calculate('+')(1)(2); // 3
 // calculate('*')(2)(3); // 6
 function calculate(operator) {
-    const operation = operator;
 
-    return function getFirstOperand(first) {
-        const firstOperand = first;
+    return function getFirstOperand(firstOperand) {
 
-        return function getSecondOperand(second) {
-            const secondOperand = second;
+        return function getSecondOperand(secondOperand) {
             let result = 0;
-            switch (operation) {
+            switch (operator) {
                 case "+" :
                     result = firstOperand + secondOperand;
                     break;
@@ -34,8 +33,8 @@ function calculate(operator) {
 }
 console.log(calculate('+')(1)(2));
 console.log(calculate('*')(2)(3));
-
-// Create code for next conditions
+//
+// // Create code for next conditions
 function sum(a) {
     function showResult(argument) {
         a += argument;

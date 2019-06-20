@@ -10,12 +10,11 @@ function findLongestWord(inputString) {
     }
     return replaceLetterInWord()
 }
-
 console.log(findLongestWord(string));
 
 // Определить, является ли строка палиндромом.
 function checkIsStringPalindrom(inputString) {
-    const reversedString = inputString.split('').reverse().join('');
+    const reversedString = inputString.split('').reverse().join(' ');
     return inputString === reversedString;
 }
 console.log(checkIsStringPalindrom('ene'));
@@ -24,9 +23,8 @@ console.log(checkIsStringPalindrom('raba'));
 
 // 3. Удалить из строки все слова, длина которых меньше пяти символов. В строке не используются знаки препинания
 function deleteWords(string) {
-    const arrayFromString = string.split(" ");
-    const filteredArray = [];
-    filteredArray.push(...arrayFromString.filter((item) => item.length > 5));
-    return filteredArray.join(" ");
+    return string.split(" ")
+                 .filter((item) => item.length > 5)
+                 .join(', ');
 }
 console.log(deleteWords(string));
