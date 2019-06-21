@@ -26,3 +26,22 @@ console.log(finalGrade(85, 5));    // 90
 console.log(finalGrade(55, 3));    // 75
 console.log(finalGrade(55, 0));    // 0
 console.log(finalGrade(20, 2));    // 0
+
+// https://www.codewars.com/kata/find-the-calculation-type
+function calcType(firstNumber, secondNumber, result) {
+    if (firstNumber + secondNumber === result) {
+        return "addition";
+    } else if (firstNumber * secondNumber === result) {
+        return "multiplication"
+    } else if (firstNumber - secondNumber === result) {
+        return "subtraction"
+    } else if (firstNumber / secondNumber === result) {
+        return "division"
+    } else {
+        throw new Error("Invalid enter data")
+    }
+}
+console.log(calcType(1, 2, 3));
+console.log(calcType(3, 2, 6));
+console.log(calcType(10, 7, 3));
+console.log(calcType(10, 2, 5));
