@@ -45,3 +45,18 @@ console.log(calcType(1, 2, 3));
 console.log(calcType(3, 2, 6));
 console.log(calcType(10, 7, 3));
 console.log(calcType(10, 2, 5));
+
+// https://www.codewars.com/kata/build-a-square
+function buildSquare(number) {
+    let b = "";
+    for (let i = 0; i < number; i++) {
+        for (let j = 0; j < number; j++) {
+            b = b + `+\t`
+        }
+        b = b + `\n`
+    }
+    return b;
+}
+console.log(buildSquare(2));
+console.log(buildSquare(3));
+console.log(buildSquare(4));
