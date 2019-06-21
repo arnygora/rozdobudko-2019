@@ -106,7 +106,6 @@ console.log(deleteWords(string));
 
 // 7
 // https://www.codewars.com/kata/credit-card-issuer-checking
-
 function getIssuer(value) {
     value = value.toString();
     const amex1 = 34, amex2 = 37,
@@ -141,3 +140,30 @@ console.log(getIssuer(6011111111111117));
 console.log(getIssuer(5105105105105100));
 console.log(getIssuer(5105105105105106));
 console.log(getIssuer(9111111111111111));
+
+// 8
+// https://www.codewars.com/kata/extract-values-and-units
+function splitValue(value) {
+    const numeric = [];
+    const unit = [];
+    const split = value.split('');
+
+    for (let i = 0; i < split.length; i++) {
+        (!isNaN(parseFloat(split[i])))
+        ? numeric.push(split[i])
+        : unit.push(split[i])
+    }
+    // TODO {val: 12, units: "px"} як зробить такий формат ?
+    const createNewObject = () => {
+        const getNumericValue = numeric.join('');
+        const getUnitValue = unit.join('');
+        return ({
+            [`val: ${getNumericValue}`] : `units: "${getUnitValue}"`
+        })
+    };
+    return createNewObject();
+}
+console.log(splitValue('12px'));
+console.log(splitValue('55vw'));
+console.log(splitValue('54%'));
+console.log(splitValue('2em'));
