@@ -60,3 +60,18 @@ function buildSquare(number) {
 console.log(buildSquare(2));
 console.log(buildSquare(3));
 console.log(buildSquare(4));
+
+// https://www.codewars.com/kata/sum-mixed-array
+const array = ['  12    ', '21px', '45.36vvfv', 'oih', 'wef212', '5458', '849jhi'];
+function makeMeANumber(inputArray) {
+    const newArray = [];
+    inputArray.forEach((value) => {
+        if (!isNaN(parseFloat(value))) {
+            newArray.push(parseFloat(value));
+        }
+    });
+    return newArray.reduce((accumulator, nextValue) => {
+        return accumulator + nextValue;
+    });
+}
+console.log(makeMeANumber(array));
