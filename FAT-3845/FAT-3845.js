@@ -5,14 +5,13 @@ const result = function fibonacci(value) {
     }
     return value * fibonacci(value - 1);
 };
-// console.log(result(5));
+console.log(result(5));
 
+// loop
 let value = 5;
-let result1 = 1;
-for (let i = 0; i <= value; i++) {
-    if (i <= value) {
-        result1 *= i;
-    }
+let result2 = 1;
+for (let i = 1; i <= value; i++) {
+    result2 = result2 * i;
 }
-    console.log(result1);
+console.log(result2);
 
