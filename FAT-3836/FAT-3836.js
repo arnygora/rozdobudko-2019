@@ -1,3 +1,4 @@
+// 1
 // https://www.codewars.com/kata/students-final-grade
 
 // 100, if a grade for the exam is more than 90 or if a number of completed projects more than 10.
@@ -27,6 +28,7 @@ console.log(finalGrade(55, 3));    // 75
 console.log(finalGrade(55, 0));    // 0
 console.log(finalGrade(20, 2));    // 0
 
+// 2
 // https://www.codewars.com/kata/find-the-calculation-type
 function calcType(firstNumber, secondNumber, result) {
     if (firstNumber + secondNumber === result) {
@@ -46,6 +48,7 @@ console.log(calcType(3, 2, 6));
 console.log(calcType(10, 7, 3));
 console.log(calcType(10, 2, 5));
 
+// 3
 // https://www.codewars.com/kata/build-a-square
 function buildSquare(number) {
     let b = "";
@@ -61,6 +64,7 @@ console.log(buildSquare(2));
 console.log(buildSquare(3));
 console.log(buildSquare(4));
 
+// 4
 // https://www.codewars.com/kata/sum-mixed-array
 const array = ['  12    ', '21px', '45.36vvfv', 'oih', 'wef212', '5458', '849jhi'];
 
@@ -77,6 +81,7 @@ function makeMeANumber(inputArray) {
 }
 console.log(makeMeANumber(array));
 
+// 5
 // https://www.codewars.com/kata/if-you-cant-sleep-just-count-sheep
 function countSheeps(numberOfSheeps) {
     let string = [];
@@ -87,6 +92,7 @@ function countSheeps(numberOfSheeps) {
 }
 console.log(countSheeps(3));
 
+// 6
 // https://www.codewars.com/kata/shortest-word
 const string = "Давно выяснено Lorem Ipsum используют потому обеспечивает более или менее стандартное заполнение шаблона";
 
@@ -98,3 +104,40 @@ function deleteWords(inputString) {
 }
 console.log(deleteWords(string));
 
+// 7
+// https://www.codewars.com/kata/credit-card-issuer-checking
+
+function getIssuer(value) {
+    value = value.toString();
+    const amex1 = 34, amex2 = 37,
+        discover = 6011,
+        mastercard1 = 51, mastercard2 = 52, mastercard3 = 53, mastercard4 = 54, mastercard5 = 55,
+        visa = 4;
+    if (value.startsWith(amex1)
+        || value.startsWith(amex2)
+        && value.length === 15) {
+        return "AMEX";
+    } else if (value.startsWith(discover) && value.length === 16) {
+        return "DISCOVER";
+    } else if (value.startsWith(mastercard1)
+        || value.startsWith(mastercard2)
+        || value.startsWith(mastercard3)
+        || value.startsWith(mastercard4)
+        || value.startsWith(mastercard5)
+        && value.length === 16) {
+        return "MasterCard";
+    } else if (value.startsWith(visa)
+        && (value.length === 13 || value.length === 16)) {
+        return "VISA"
+    } else {
+        return "UNKNOWN CARD"
+    }
+}
+console.log(getIssuer(4111111111111111));
+console.log(getIssuer(4111111111111));
+console.log(getIssuer(4012888888881881));
+console.log(getIssuer(378282246310005));
+console.log(getIssuer(6011111111111117));
+console.log(getIssuer(5105105105105100));
+console.log(getIssuer(5105105105105106));
+console.log(getIssuer(9111111111111111));
