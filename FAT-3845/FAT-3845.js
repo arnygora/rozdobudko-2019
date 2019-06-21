@@ -8,7 +8,7 @@ const result = function fibonacci(value) {
 console.log(result(5));
 
 // loop
-let value = 5;
+let value = 5; 
 let result2 = 1;
 for (let i = 1; i <= value; i++) {
     result2 = result2 * i;
