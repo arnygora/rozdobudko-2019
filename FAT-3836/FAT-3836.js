@@ -86,3 +86,15 @@ function countSheeps(numberOfSheeps) {
     return string.join('')
 }
 console.log(countSheeps(3));
+
+// https://www.codewars.com/kata/shortest-word
+const string = "Давно выяснено Lorem Ipsum используют потому обеспечивает более или менее стандартное заполнение шаблона";
+
+function deleteWords(inputString) {
+    const arr = [];
+    const filtered = () => inputString.split(' ').filter(item => item.length < 6);
+    filtered().forEach(item => arr.push(`Length of "${item}" => ${item.length}\n`));
+    return arr.toString().replace(/,/g," ");
+}
+console.log(deleteWords(string));
+
