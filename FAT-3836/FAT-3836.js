@@ -6,8 +6,12 @@
 // 75, if a grade for the exam is more than 50 and if a number of completed projects is minimum 2.
 // 0, in other cases
 
-const minCountProjects = 2, middleCountProjects = 5, highCountProjects = 10,
-    lowCountExams = 50, middleCountExams = 75, extraCountExams = 90;
+const minCountProjects = 2,
+    middleCountProjects = 5,
+    highCountProjects = 10,
+    lowCountExams = 50,
+    middleCountExams = 75,
+    extraCountExams = 90;
 
 function finalGrade(examCount, projectsCount) {
     if (examCount > extraCountExams || projectsCount > highCountProjects) {
@@ -51,14 +55,14 @@ console.log(calcType(10, 2, 5));
 // 3
 // https://www.codewars.com/kata/build-a-square
 function buildSquare(number) {
-    let b = "";
+    let figure = "";
     for (let i = 0; i < number; i++) {
         for (let j = 0; j < number; j++) {
-            b = b + `+\t`
+            figure = figure + `+\t`
         }
-        b = b + `\n`
+        figure = figure + `\n`
     }
-    return b;
+    return figure;
 }
 console.log(buildSquare(2));
 console.log(buildSquare(3));
