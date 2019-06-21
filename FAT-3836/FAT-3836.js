@@ -63,6 +63,7 @@ console.log(buildSquare(4));
 
 // https://www.codewars.com/kata/sum-mixed-array
 const array = ['  12    ', '21px', '45.36vvfv', 'oih', 'wef212', '5458', '849jhi'];
+
 function makeMeANumber(inputArray) {
     const newArray = [];
     inputArray.forEach((value) => {
@@ -75,3 +76,13 @@ function makeMeANumber(inputArray) {
     });
 }
 console.log(makeMeANumber(array));
+
+// https://www.codewars.com/kata/if-you-cant-sleep-just-count-sheep
+function countSheeps(numberOfSheeps) {
+    let string = [];
+    for (let i = 1; i <= numberOfSheeps; i++) {
+        string.push(`${i} sheep...`);
+    }
+    return string.join('')
+}
+console.log(countSheeps(3));
