@@ -1,0 +1,28 @@
+// https://www.codewars.com/kata/students-final-grade
+
+// 100, if a grade for the exam is more than 90 or if a number of completed projects more than 10.
+// 90, if a grade for the exam is more than 75 and if a number of completed projects is minimum 5.
+// 75, if a grade for the exam is more than 50 and if a number of completed projects is minimum 2.
+// 0, in other cases
+
+const minCountProjects = 2, middleCountProjects = 5, highCountProjects = 10,
+    lowCountExams = 50, middleCountExams = 75, extraCountExams = 90;
+
+function finalGrade(examCount, projectsCount) {
+    if (examCount > extraCountExams || projectsCount > highCountProjects) {
+        return 100;
+    } else if (examCount > middleCountExams && projectsCount >= middleCountProjects) {
+        return 90;
+    } else if (examCount > lowCountExams && projectsCount >= minCountProjects) {
+        return 75;
+    } else {
+        return 0;
+    }
+}
+console.log(finalGrade(100, 12));  // 100
+console.log(finalGrade(99, 0));    // 100
+console.log(finalGrade(10, 15));   // 100
+console.log(finalGrade(85, 5));    // 90
+console.log(finalGrade(55, 3));    // 75
+console.log(finalGrade(55, 0));    // 0
+console.log(finalGrade(20, 2));    // 0
