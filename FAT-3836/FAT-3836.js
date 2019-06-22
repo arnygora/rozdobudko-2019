@@ -5,7 +5,6 @@
 // 90, if a grade for the exam is more than 75 and if a number of completed projects is minimum 5.
 // 75, if a grade for the exam is more than 50 and if a number of completed projects is minimum 2.
 // 0, in other cases
-
 const minCountProjects = 2,
     middleCountProjects = 5,
     highCountProjects = 10,
@@ -101,10 +100,10 @@ console.log(countSheeps(3));
 const string = "Давно выяснено Lorem Ipsum используют потому обеспечивает более или менее стандартное заполнение шаблона";
 
 function deleteWords(inputString) {
-    const arr = [];
+    const shortWordsArray = [];
     const filtered = () => inputString.split(' ').filter(item => item.length < 6);
-    filtered().forEach(item => arr.push(`Length of "${item}" => ${item.length}\n`));
-    return arr.toString().replace(/,/g," ");
+    filtered().forEach(item => shortWordsArray.push(`Length of "${item}" => ${item.length}\n`));
+    return shortWordsArray.toString().replace(/,/g, " ");
 }
 console.log(deleteWords(string));
 
@@ -112,9 +111,14 @@ console.log(deleteWords(string));
 // https://www.codewars.com/kata/credit-card-issuer-checking
 function getIssuer(value) {
     value = value.toString();
-    const amex1 = 34, amex2 = 37,
+    const amex1 = 34,
+        amex2 = 37,
         discover = 6011,
-        mastercard1 = 51, mastercard2 = 52, mastercard3 = 53, mastercard4 = 54, mastercard5 = 55,
+        mastercard1 = 51,
+        mastercard2 = 52,
+        mastercard3 = 53,
+        mastercard4 = 54,
+        mastercard5 = 55,
         visa = 4;
     if (value.startsWith(amex1)
         || value.startsWith(amex2)
@@ -162,7 +166,7 @@ function splitValue(value) {
         const getNumericValue = numeric.join('');
         const getUnitValue = unit.join('');
         return ({
-            [`val: ${getNumericValue}`] : `units: "${getUnitValue}"`
+            [`val: ${getNumericValue}`]: `units: "${getUnitValue}"`
         })
     };
     return createNewObject();
