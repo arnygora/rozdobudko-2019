@@ -1,7 +1,4 @@
-/* # Вывести текущий месяц по-русски (Украински, как пожелаешь)
-# Есть поле ввода текста, туда вводим дату, при клике на кнопку "Посчитать", покажет сколько дней осталось до дня рождения
-Каждую задачу делай отдельным комитом */
-
+// # Вывести текущий месяц по-русски (Украински, как пожелаешь)
 const showMonth = function () {
     const date = new Date().getMonth();
 
@@ -51,8 +48,8 @@ console.log(showMonth());
 // # Вывести текущую дату, если месяц или день состоит из одной цифры - добавить 0 впереди
 const showDate = function () {
     const date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth();
+    const day = date.getDate();
+    const month = date.getMonth();
 
     function validateData(data) {
         if (data.toString().length < 2) {
@@ -60,7 +57,17 @@ const showDate = function () {
         }
         return data;
     }
-
     return `${validateData(day)}.${validateData(month + 1)}`
 };
 console.log(showDate());
+
+// # Есть поле ввода текста, туда вводим дату, при клике на кнопку "Посчитать", покажет сколько дней осталось до дня рождения
+const moment = require('moment');
+
+const calculateDaysToBirthday = function () {
+    const enteredData = '2019-07-13';
+    const convertedData = moment(enteredData);
+    const nowDate = moment();
+    return convertedData.diff(nowDate, 'days');
+};
+console.log(calculateDaysToBirthday());
