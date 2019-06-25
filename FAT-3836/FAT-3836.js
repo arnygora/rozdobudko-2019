@@ -111,30 +111,34 @@ console.log(deleteWords(string));
 // https://www.codewars.com/kata/credit-card-issuer-checking
 function getIssuer(value) {
     value = value.toString();
-    const amex1 = 34,
-        amex2 = 37,
-        discover = 6011,
-        mastercard1 = 51,
-        mastercard2 = 52,
-        mastercard3 = 53,
-        mastercard4 = 54,
-        mastercard5 = 55,
-        visa = 4;
-    if (value.startsWith(amex1)
-        || value.startsWith(amex2)
-        && value.length === 15) {
+    const amexStart1 = 34,
+        amexStart2 = 37,
+        amexNumbersLength = 15,
+        discoverStart = 6011,
+        discoverNumbersLength = 16,
+        mastercardStart1 = 51,
+        mastercardStart2 = 52,
+        mastercardStart3 = 53,
+        mastercardStart4 = 54,
+        mastercardStart5 = 55,
+        mastercardNumbersLength = 16,
+        visaStart = 4,
+        visaNumbersLength = [13, 16];
+    if (value.startsWith(amexStart1)
+        || value.startsWith(amexStart2)
+        && value.length === amexNumbersLength) {
         return "AMEX";
-    } else if (value.startsWith(discover) && value.length === 16) {
+    } else if (value.startsWith(discoverStart) && value.length === discoverNumbersLength) {
         return "DISCOVER";
-    } else if (value.startsWith(mastercard1)
-        || value.startsWith(mastercard2)
-        || value.startsWith(mastercard3)
-        || value.startsWith(mastercard4)
-        || value.startsWith(mastercard5)
-        && value.length === 16) {
+    } else if (value.startsWith(mastercardStart1)
+        || value.startsWith(mastercardStart2)
+        || value.startsWith(mastercardStart3)
+        || value.startsWith(mastercardStart4)
+        || value.startsWith(mastercardStart5)
+        && value.length === mastercardNumbersLength) {
         return "MasterCard";
-    } else if (value.startsWith(visa)
-        && (value.length === 13 || value.length === 16)) {
+    } else if (value.startsWith(visaStart)
+        && (value.length === visaNumbersLength[0] || value.length === visaNumbersLength[1])) {
         return "VISA"
     } else {
         return "UNKNOWN CARD"
