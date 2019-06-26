@@ -1,73 +1,56 @@
 // # Вывести текущий месяц по-русски (Украински, как пожелаешь)
 const showMonth = function () {
-    const date = new Date().getMonth();
+    const currentMonth = new Date().getMonth();
 
-    switch (date) {
-        case 0:
-            return 'Січень';
-            break;
-        case 1:
-            return 'Лютий';
-            break;
-        case 2:
-            return 'Березень';
-            break;
-        case 3:
-            return 'Квітень';
-            break;
-        case 4:
-            return 'Травень';
-            break;
-        case 5:
-            return 'Червень';
-            break;
-        case 6:
-            return 'Липень';
-            break;
-        case 7:
-            return 'Серпень';
-            break;
-        case 8:
-            return 'Вересень';
-            break;
-        case 9:
-            return 'Жовтень';
-            break;
-        case 10:
-            return 'Листопад';
-            break;
-        case 11:
-            return 'Грудень';
-            break;
-        default:
-            throw new Error('something went wrong')
-    }
+    const getMonth = {
+        0: 'Січень',
+        1: 'Лютий',
+        2: 'Березень',
+        3: 'Квітень',
+        4: 'Травень',
+        5: 'Червень',
+        6: 'Липень',
+        7: 'Серпень',
+        8: 'Вересень',
+        9: 'Жовтень',
+        10: 'Листопад',
+        11: 'Грудень',
+    };
+
+    return getMonth[currentMonth]
 };
+
 console.log(showMonth());
 
 // # Вывести текущую дату, если месяц или день состоит из одной цифры - добавить 0 впереди
 const showDate = function () {
-    const date = new Date();
-    const day = date.getDate();
-    const month = date.getMonth();
+    const currentDate = new Date();
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth();
 
-    function validateData(data) {
-        if (data.toString().length < 2) {
-            return `0${data}`
+    function validateData(enteredDateFromUser) {
+        if (enteredDateFromUser.toString().length < 2) {
+
+            return `0${enteredDateFromUser}`
         }
-        return data;
+
+        return enteredDateFromUser;
     }
+
     return `${validateData(day)}.${validateData(month + 1)}`
 };
+
 console.log(showDate());
 
 // # Есть поле ввода текста, туда вводим дату, при клике на кнопку "Посчитать", покажет сколько дней осталось до дня рождения
-const moment = require('moment');
+// const moment = require('moment');
 
-const calculateDaysToBirthday = function () {
+calculateDaysToBirthday = () => {
     const enteredData = '2019-07-13';
     const convertedData = moment(enteredData);
     const nowDate = moment();
+
     return convertedData.diff(nowDate, 'days');
 };
+
 console.log(calculateDaysToBirthday());
