@@ -5,22 +5,26 @@
 // 90, if a grade for the exam is more than 75 and if a number of completed projects is minimum 5.
 // 75, if a grade for the exam is more than 50 and if a number of completed projects is minimum 2.
 // 0, in other cases
-const minCountProjects = 2,
-    middleCountProjects = 5,
-    highCountProjects = 10,
-    lowCountExams = 50,
-    middleCountExams = 75,
-    extraCountExams = 90;
+const minCountProjects = 2;
+const middleCountProjects = 5;
+const highCountProjects = 10;
+const lowCountExams = 50;
+const middleCountExams = 75;
+const extraCountExams = 90;
 
 function finalGrade(examCount, projectsCount) {
-    if (examCount > extraCountExams || projectsCount > highCountProjects) {
-        return 100;
-    } else if (examCount > middleCountExams && projectsCount >= middleCountProjects) {
-        return 90;
-    } else if (examCount > lowCountExams && projectsCount >= minCountProjects) {
-        return 75;
-    } else {
-        return 0;
+    switch (true) {
+        case (examCount > extraCountExams || projectsCount > highCountProjects):
+            return 100;
+            break;
+        case (examCount > middleCountExams && projectsCount >= middleCountProjects):
+            return 90;
+            break;
+        case (examCount > lowCountExams && projectsCount >= minCountProjects):
+            return 75;
+            break;
+        default:
+            return 0;
     }
 }
 console.log(finalGrade(100, 12));  // 100
@@ -109,40 +113,41 @@ console.log(deleteWords(string));
 
 // 7
 // https://www.codewars.com/kata/credit-card-issuer-checking
-function getIssuer(value) {
-    value = value.toString();
-    const amexStart1 = 34,
-        amexStart2 = 37,
-        amexNumbersLength = 15,
-        discoverStart = 6011,
-        discoverNumbersLength = 16,
-        mastercardStart1 = 51,
-        mastercardStart2 = 52,
-        mastercardStart3 = 53,
-        mastercardStart4 = 54,
-        mastercardStart5 = 55,
-        mastercardNumbersLength = 16,
-        visaStart = 4,
-        visaNumbersLength = [13, 16];
-    if (value.startsWith(amexStart1)
-        || value.startsWith(amexStart2)
-        && value.length === amexNumbersLength) {
-        return "AMEX";
-    } else if (value.startsWith(discoverStart) && value.length === discoverNumbersLength) {
-        return "DISCOVER";
-    } else if (value.startsWith(mastercardStart1)
-        || value.startsWith(mastercardStart2)
-        || value.startsWith(mastercardStart3)
-        || value.startsWith(mastercardStart4)
-        || value.startsWith(mastercardStart5)
-        && value.length === mastercardNumbersLength) {
-        return "MasterCard";
-    } else if (value.startsWith(visaStart)
-        && (value.length === visaNumbersLength[0] || value.length === visaNumbersLength[1])) {
-        return "VISA"
-    } else {
-        return "UNKNOWN CARD"
-    }
+function getIssuer(cardNumber) {
+    const cards = [
+        {
+            type: 'AMEX',
+            prefix: ['34', '37'],
+            length: [16],
+        },
+        {
+            type: 'DISCOVER',
+            prefix: ['6011'],
+            length: [16],
+        },
+        {
+            type: 'MASTERCARD',
+            prefix: ['51', '52', '53', '54', '55'],
+            length: [16],
+        },
+        {
+            type: 'VISA',
+            prefix: ['4'],
+            length: [13, 16],
+        },
+    ];
+    let cardValueToString = cardNumber.toString();
+    let value = '';
+    cards.forEach(item => {
+        if (item.prefix.some(prefix => cardValueToString.startsWith(prefix))
+            || item.length === cardValueToString.length) {
+            // fixme redid without console
+            console.log(item.type);
+        } else {
+            return 'unknown card';
+        }
+    });
+    return value;
 }
 console.log(getIssuer(4111111111111111));
 console.log(getIssuer(4111111111111));
@@ -155,27 +160,10 @@ console.log(getIssuer(9111111111111111));
 
 // 8
 // https://www.codewars.com/kata/extract-values-and-units
-function splitValue(value) {
-    const numeric = [];
-    const unit = [];
-    const split = value.split('');
-
-    for (let i = 0; i < split.length; i++) {
-        (!isNaN(parseFloat(split[i])))
-        ? numeric.push(split[i])
-        : unit.push(split[i])
-    }
-    // TODO {val: 12, units: "px"} як зробить такий формат ?
-    const createNewObject = () => {
-        const getNumericValue = numeric.join('');
-        const getUnitValue = unit.join('');
-        return ({
-            [`val: ${getNumericValue}`]: `units: "${getUnitValue}"`
-        })
-    };
-    return createNewObject();
-}
-console.log(splitValue('12px'));
-console.log(splitValue('55vw'));
-console.log(splitValue('54%'));
-console.log(splitValue('2em'));
+const extractData = (string) => {
+    return `val: ${parseInt(string)}, units: ${string.replace(parseInt(string), '')}`
+};
+console.log(extractData('12px'));
+console.log(extractData('55vw'));
+console.log(extractData('54%'));
+console.log(extractData('2em'));
