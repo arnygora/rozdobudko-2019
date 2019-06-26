@@ -12,7 +12,7 @@ const lowCountExams = 50;
 const middleCountExams = 75;
 const extraCountExams = 90;
 
-function finalGrade(examCount, projectsCount) {
+function computeFinalGrade(examCount, projectsCount) {
     switch (true) {
         case (examCount > extraCountExams || projectsCount > highCountProjects):
             return 100;
@@ -27,33 +27,35 @@ function finalGrade(examCount, projectsCount) {
             return 0;
     }
 }
-console.log(finalGrade(100, 12));  // 100
-console.log(finalGrade(99, 0));    // 100
-console.log(finalGrade(10, 15));   // 100
-console.log(finalGrade(85, 5));    // 90
-console.log(finalGrade(55, 3));    // 75
-console.log(finalGrade(55, 0));    // 0
-console.log(finalGrade(20, 2));    // 0
+
+console.log(computeFinalGrade(100, 12));  // 100
+console.log(computeFinalGrade(99, 0));    // 100
+console.log(computeFinalGrade(10, 15));   // 100
+console.log(computeFinalGrade(85, 5));    // 90
+console.log(computeFinalGrade(55, 3));    // 75
+console.log(computeFinalGrade(55, 0));    // 0
+console.log(computeFinalGrade(20, 2));    // 0
 
 // 2
 // https://www.codewars.com/kata/find-the-calculation-type
-function calcType(firstNumber, secondNumber, result) {
-    if (firstNumber + secondNumber === result) {
+function findMathOperation(firstOperand, secondOperand, result) {
+    if (firstOperand + secondOperand === result) {
         return "addition";
-    } else if (firstNumber * secondNumber === result) {
+    } else if (firstOperand * secondOperand === result) {
         return "multiplication"
-    } else if (firstNumber - secondNumber === result) {
+    } else if (firstOperand - secondOperand === result) {
         return "subtraction"
-    } else if (firstNumber / secondNumber === result) {
+    } else if (firstOperand / secondOperand === result) {
         return "division"
     } else {
         throw new Error("Invalid enter data")
     }
 }
-console.log(calcType(1, 2, 3));
-console.log(calcType(3, 2, 6));
-console.log(calcType(10, 7, 3));
-console.log(calcType(10, 2, 5));
+
+console.log(findMathOperation(1, 2, 3));
+console.log(findMathOperation(3, 2, 6));
+console.log(findMathOperation(10, 7, 3));
+console.log(findMathOperation(10, 2, 5));
 
 // 3
 // https://www.codewars.com/kata/build-a-square
@@ -65,8 +67,10 @@ function buildSquare(number) {
         }
         figure = figure + `\n`
     }
+    
     return figure;
 }
+
 console.log(buildSquare(2));
 console.log(buildSquare(3));
 console.log(buildSquare(4));
@@ -75,18 +79,17 @@ console.log(buildSquare(4));
 // https://www.codewars.com/kata/sum-mixed-array
 const array = ['  12    ', '21px', '45.36vvfv', 'oih', 'wef212', '5458', '849jhi'];
 
-function makeMeANumber(inputArray) {
-    const newArray = [];
-    inputArray.forEach((value) => {
-        if (!isNaN(parseFloat(value))) {
-            newArray.push(parseFloat(value));
+function makeSingleNumberFromArray(inputArray) {
+    return inputArray.reduce((accumulator, nextValue) => {
+        if (!isNaN(parseFloat(nextValue))) {
+            return accumulator + parseFloat(nextValue);
+        } else {
+            return accumulator
         }
-    });
-    return newArray.reduce((accumulator, nextValue) => {
-        return accumulator + nextValue;
-    });
+    }, 0);
 }
-console.log(makeMeANumber(array));
+
+console.log(makeSingleNumberFromArray(array));
 
 // 5
 // https://www.codewars.com/kata/if-you-cant-sleep-just-count-sheep
@@ -95,8 +98,10 @@ function countSheeps(numberOfSheeps) {
     for (let i = 1; i <= numberOfSheeps; i++) {
         string.push(`${i} sheep...`);
     }
+
     return string.join('')
 }
+
 console.log(countSheeps(3));
 
 // 6
@@ -107,8 +112,10 @@ function deleteWords(inputString) {
     const shortWordsArray = [];
     const filtered = () => inputString.split(' ').filter(item => item.length < 6);
     filtered().forEach(item => shortWordsArray.push(`Length of "${item}" => ${item.length}\n`));
+
     return shortWordsArray.toString().replace(/,/g, " ");
 }
+
 console.log(deleteWords(string));
 
 // 7
@@ -141,14 +148,15 @@ function getIssuer(cardNumber) {
     cards.forEach(item => {
         if (item.prefix.some(prefix => cardValueToString.startsWith(prefix))
             || item.length === cardValueToString.length) {
-            // fixme redid without console
-            console.log(item.type);
+            value = item.type;
         } else {
             return 'unknown card';
         }
     });
+
     return value;
 }
+
 console.log(getIssuer(4111111111111111));
 console.log(getIssuer(4111111111111));
 console.log(getIssuer(4012888888881881));
