@@ -45,7 +45,7 @@ console.log(showDate());
 // # Есть поле ввода текста, туда вводим дату, при клике на кнопку "Посчитать", покажет сколько дней осталось до дня рождения
 // const moment = require('moment');
 
-calculateDaysToBirthday = () => {
+const calculateDaysToBirthday = () => {
     const enteredData = '2019-07-13';
     const convertedData = moment(enteredData);
     const nowDate = moment();
