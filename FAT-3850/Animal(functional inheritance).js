@@ -6,12 +6,12 @@ const Animal = function () {
 };
 
 const ColdBlooded = function () {
-    Animal.apply(this, arguments);
+    Animal.apply(this);
     this.familia = 'Хладнокровные';
 };
 
 const Lizards = function (name, residences) {
-    ColdBlooded.apply(this, arguments);
+    ColdBlooded.apply(this);
     this.name = name;
     this.residences = residences;
     this.classis = 'Ящеры';
@@ -21,7 +21,7 @@ const varanus = new Lizards('Варан', 'Australia');
 console.log(varanus.fullInfo());
 
 const Snakes = function (name, residences) {
-    ColdBlooded.apply(this, arguments);
+    ColdBlooded.apply(this);
     this.name = name;
     this.residences = residences;
     this.classis = 'Змеи';
@@ -31,26 +31,26 @@ const cobra = new Snakes('Кобра', 'India');
 console.log(cobra.fullInfo());
 
 function Mammal() {
-    Animal.apply(this, arguments);
+    Animal.apply(this);
     this.familia = 'Млекопитающие';
 }
 
 function Predators(name, residences) {
-    Mammal.apply(this, arguments);
+    Mammal.apply(this);
     this.name = name;
     this.residences = residences;
     this.classis = 'Хищные';
 }
 
 function Primates(name, residences) {
-    Mammal.apply(this, arguments);
+    Mammal.apply(this);
     this.name = name;
     this.residences = residences;
     this.classis = 'Приматы';
 }
 
 function Marsupials(name, residences) {
-    Mammal.apply(this, arguments);
+    Mammal.apply(this);
     this.name = name;
     this.residences = residences;
     this.classis = 'Сумчатые';
