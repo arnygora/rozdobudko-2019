@@ -3,56 +3,29 @@ const Animal = function (name, residences) {
     this.residences = residences;
     this.regnum = 'Фауна';
 };
-Animal.prototype.coldBlooded = {
-    familia: 'Хладнокровные',
+Animal.prototype.fullInfo = function () {
+    return `Царство: ${this.regnum} => Род: ${Animal.prototype.familia} => Класс: ${Animal.prototype.classis} => Вид: ${this.name} => Места обитания: ${this.residences}`
 };
-Animal.prototype.lizards = {
-    classis: 'Ящеры',
-};
+Animal.prototype.familia ='Хладнокровные';
+Animal.prototype.classis = 'Ящеры';
 
 const varanus = new Animal('Варан', 'Australia');
-Animal.prototype.fullInfo = function () {
-    return `Царство: ${this.regnum} => Род: ${Animal.prototype.coldBlooded.familia} => Класс: ${Animal.prototype.lizards.classis} => Вид: ${this.name} => Места обитания: ${this.residences}`
-};
 console.log(varanus.fullInfo());
 
-Animal.prototype.snakes = {
-    classis: 'Змеи',
-};
-
+Animal.prototype.classis = 'Змеи';
 const cobra = new Animal('Кобра', 'India');
-Animal.prototype.fullInfo = function () {
-    return `Царство: ${this.regnum} => Род: ${Animal.prototype.coldBlooded.familia} => Класс: ${Animal.prototype.snakes.classis} => Вид: ${this.name} => Места обитания: ${this.residences}`
-};
 console.log(cobra.fullInfo());
 
-Animal.prototype.mammal = {
-    familia: 'Млекопитающие',
-};
-Animal.prototype.predators = {
-    classis: 'Хищные',
-};
-Animal.prototype.primates = {
-    classis: 'Приматы',
-};
-Animal.prototype.marsupials = {
-    classis: 'Сумчатые',
-};
+Animal.prototype.familia = 'Млекопитающие';
+Animal.prototype.classis = 'Хищные';
 
 const cat = new Animal('Тигр', 'Amazonia');
-Animal.prototype.fullInfo = function () {
-    return `Царство: ${this.regnum} => Род: ${Animal.prototype.mammal.familia} => Класс: ${Animal.prototype.predators.classis} => Вид: ${this.name} => Места обитания: ${this.residences}`
-};
 console.log(cat.fullInfo());
 
+Animal.prototype.classis = 'Приматы';
 const monkey = new Animal('Бонобо', 'Polinesia');
-Animal.prototype.fullInfo = function () {
-    return `Царство: ${this.regnum} => Род: ${Animal.prototype.mammal.familia} => Класс: ${Animal.prototype.primates.classis} => Вид: ${this.name} => Места обитания: ${this.residences}`
-};
 console.log(monkey.fullInfo());
 
+Animal.prototype.classis = 'Сумчатые';
 const kangoo = new Animal('Валаби', 'Australia');
-Animal.prototype.fullInfo = function () {
-    return `Царство: ${this.regnum} => Род: ${Animal.prototype.mammal.familia} => Класс: ${Animal.prototype.marsupials.classis} => Вид: ${this.name} => Места обитания: ${this.residences}`
-};
 console.log(kangoo.fullInfo());
