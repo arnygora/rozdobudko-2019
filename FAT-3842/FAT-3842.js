@@ -10,7 +10,6 @@ class WorkWithArray {
     get replaceMinMaxValuesInArray() {
         const replacedArray = [];
         console.log(`original array => ${this.array}`);
-
         let max = this.array.indexOf(Math.max(...this.array));
         let min = this.array.indexOf(Math.min(...this.array));
 
@@ -72,13 +71,30 @@ class WorkWithArray {
 
         return `Found biggest range if the same digits: start ${arrayOfIndexes[min]}, end: ${arrayOfIndexes[maxIndex]}`;
     };
+
+    get redistributeArraysValue() {
+        let firstArray = [3, 22, 7, 2, 10, 5];
+        let secondArray = [7, 12, 8, 4, 43, 6, 77, 5, 34];
+        const biggestValues = [];
+        const smallestValues = [];
+        const concatArrays = firstArray.concat(secondArray);
+        const getAverageArraysValue = concatArrays.reduce((accumulator, nextValue) => accumulator + nextValue) / concatArrays.length;
+        concatArrays.forEach(item => {
+            if (item <= getAverageArraysValue) {
+                smallestValues.push(item)
+            } else biggestValues.push(item)
+        });
+        return ({
+            ['smallest values']: smallestValues,
+            ['biggest values']: biggestValues,
+        })
+    }
 }
 
 const result = new WorkWithArray(array, binaryArray);
-// console.log(result.averageArrayValue);
-// console.log(result.valuesBiggerThanAverage);
-// console.log(result.checkRepeatedValues);
-console.log(`==========================`);
-console.log('original array=> ' + binaryArray);
-// console.log(`replaced array => ${result.replaceMinMaxValuesInArray}`);
+console.log(result.averageArrayValue);
+console.log(result.valuesBiggerThanAverage);
+console.log(result.checkRepeatedValues);
+console.log(`replaced array => ${result.replaceMinMaxValuesInArray}`);
 console.log(result.longestRangeSameValues);
+console.log(result.redistributeArraysValue);
