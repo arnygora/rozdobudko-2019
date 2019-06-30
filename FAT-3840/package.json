@@ -1,0 +1,22 @@
+{
+  "name": "rozdobudko-2019",
+  "version": "1.0.0",
+  "description": "",
+  "main": "questions.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arnygora/rozdobudko-2019.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arnygora/rozdobudko-2019/issues"
+  },
+  "homepage": "https://github.com/arnygora/rozdobudko-2019#readme",
+  "dependencies": {
+    "moment": "^2.24.0"
+  }
+}
