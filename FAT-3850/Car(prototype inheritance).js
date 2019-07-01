@@ -1,56 +1,48 @@
-const Car = function (parameters) {
+function Car(params) {
     this.wheels = 4;
     this.crankshaft = true;
     this.transmission = 'automatic';
-    this.doors = parameters.doors
-                 ? parameters.doors
-                 : 4;
-    this.color = parameters.color
-                 ? parameters.color
-                 : 'red';
-};
+}
 Car.prototype.carInfo = function () {
-    return `${this.name}, engine ${this.volume} liters, ${this.transmission}, number of seats: ${this['quantity of seats']}`
+    return `${this.name}, engine ${this.volume} liters, ${this.transmission}, number of seats: ${this.seats}, color ${this.color}`
 };
 
-const GasEngine = function (parameters) {
+function GasEngine(parameters) {
     Car.apply(this, arguments);
-    this['quality standard'] = parameters.gasStandard;
-    this.volume = parameters.volume;
-    this.price = function () {
-        return (`Price ${this.volume * 100 * 50} $`)
-    }
-};
+    this['Gas standard'] = parameters.gasStandard;
+}
 
 const Diesel = function (parameters) {
     Car.apply(this, arguments);
+    this.color = parameters.color;
     this.name = parameters.name;
     this['quality standard'] = parameters.gasStandard;
-    this['quantity of seats'] = parameters.seats;
+    this.seats = parameters.seats;
     this.volume = parameters.volume;
-    this.price = function () {
-        return (`Price ${this.volume * 80 * 75} $`)
-    }
 };
 Diesel.prototype = Object.create(Car.prototype);
 
-const PassengerCar = function (parameters) {
+function PassengerCar(parameters) {
     GasEngine.apply(this, arguments);
     this.name = parameters.name;
-    this['quantity of seats'] = parameters.seats;
-};
+    this.volume = parameters.volume;
+    this.color = parameters.color;
+    this.seats = parameters.seats;
+}
 PassengerCar.prototype = Object.create(Car.prototype);
 
-const SportCar = function (parameters) {
+function SportCar(parameters) {
     GasEngine.apply(this, arguments);
     this.name = parameters.name;
-    this['quantity of seats'] = parameters.seats;
-};
+    this.volume = parameters.volume;
+    this.color = parameters.color;
+    this.seats = parameters.seats;
+}
 SportCar.prototype = Object.create(Car.prototype);
 
 const skoda = new PassengerCar({
     name: 'Skoda',
-    color: 'grey',
+    color: 'indianred',
     volume: 2.8,
     seats: 5,
     gasStandard: 'EURO 5',
@@ -58,10 +50,10 @@ const skoda = new PassengerCar({
 
 const lambo = new SportCar({
     name: 'Lambo',
+    color: 'red',
     volume: 4,
     seats: 2,
-    doors: 2,
-    gasStandard: 'EURO 5',
+    gasStandard: 'EURO 6',
 });
 
 const pickup = new PassengerCar({
@@ -74,17 +66,12 @@ const pickup = new PassengerCar({
 
 const mercedes = new Diesel({
     name: 'Vito',
-    volume: 2.9666,
+    volume: 2.96,
     seats: 8,
-    doors: 5,
+    color: 'black',
     gasStandard: 'EURO 6',
 });
-
 console.log(skoda.carInfo());
-console.log(skoda.price());
 console.log(lambo.carInfo());
-console.log(lambo.price());
 console.log(pickup.carInfo());
-console.log(pickup.price());
 console.log(mercedes.carInfo());
-console.log(mercedes.price());
