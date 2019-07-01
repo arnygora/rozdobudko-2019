@@ -4,12 +4,15 @@ function Car(params) {
     this.transmission = 'automatic';
 }
 Car.prototype.carInfo = function () {
-    return `${this.name}, engine ${this.volume} liters, ${this.transmission}, number of seats: ${this.seats}, color ${this.color}`
+    return `${this.name}, engine ${this.volume} liters, ${this.transmission}, number of seats: ${this.seats}, color ${this.color}. // `
 };
 
 function GasEngine(parameters) {
     Car.apply(this, arguments);
     this['Gas standard'] = parameters.gasStandard;
+    this.price = function () {
+        return (`Price ${this.volume * 80 * 75} $`)
+    }
 }
 
 const Diesel = function (parameters) {
@@ -19,8 +22,13 @@ const Diesel = function (parameters) {
     this['quality standard'] = parameters.gasStandard;
     this.seats = parameters.seats;
     this.volume = parameters.volume;
+    this.price = function () {
+        return (`Price ${this.volume * 80 * 75} $`)
+    }
 };
-Diesel.prototype = Object.create(Car.prototype);
+Diesel.prototype.carInfo = function () {
+    return Car.prototype.carInfo.apply(this) + this.price();
+};
 
 function PassengerCar(parameters) {
     GasEngine.apply(this, arguments);
@@ -29,7 +37,9 @@ function PassengerCar(parameters) {
     this.color = parameters.color;
     this.seats = parameters.seats;
 }
-PassengerCar.prototype = Object.create(Car.prototype);
+PassengerCar.prototype.carInfo = function () {
+    return Car.prototype.carInfo.apply(this) + this.price();
+};
 
 function SportCar(parameters) {
     GasEngine.apply(this, arguments);
@@ -38,7 +48,9 @@ function SportCar(parameters) {
     this.color = parameters.color;
     this.seats = parameters.seats;
 }
-SportCar.prototype = Object.create(Car.prototype);
+SportCar.prototype.carInfo = function () {
+    return Car.prototype.carInfo.apply(this) + this.price();
+};
 
 const skoda = new PassengerCar({
     name: 'Skoda',
