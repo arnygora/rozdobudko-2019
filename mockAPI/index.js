@@ -1,6 +1,5 @@
 import { getAPIData } from './module.js'
 
-// import {moment} from './node_modules/moment/moment.js';
 const wrapper = document.querySelector('.wrapper');
 
 const buildLayout = () => {

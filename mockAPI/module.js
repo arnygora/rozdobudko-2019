@@ -6,5 +6,5 @@ export function getAPIData() {
             console.table(data);
             return data;
         })
-        .catch(error => console.log(error));
+        .catch(error => new Error(error));
 }
