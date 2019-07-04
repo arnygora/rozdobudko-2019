@@ -6,14 +6,11 @@ const wrapper = document.querySelector('.wrapper');
 const buildLayout = () => {
     getAPIData().then(data => {
         return data.map(({name, avatar, createdAt}) => {
-            // let now = moment();
-            // console.log(now);
             let figure = document.createElement('figure'),
                 img = document.createElement('img'),
                 figcaption = document.createElement('figcaption'),
                 dateSpan = document.createElement('span');
-            // createdDate = moment(createdAt);
-            dateSpan.innerText = `${createdAt}`;
+            dateSpan.innerText = `${new Date(createdAt).getFullYear()}`;
             figcaption.innerText = `${name}`;
             figcaption.appendChild(dateSpan);
             img.src = `${avatar}`;
