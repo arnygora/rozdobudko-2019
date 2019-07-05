@@ -1,7 +1,7 @@
 // 7.  Реализовать функцию f: f(2, 3) -> 5, при вызове f(2)(3), тоже вернет 5
-function ff(argument) {
+function countArguments(argument) {
     if (arguments.length > 1) {
-        return Array.from(arguments).reduce((accum, next) => accum + next);
+        return Array.from(arguments).reduce((accumulator, nextArgument) => accumulator + nextArgument);
     }
     function innerFunction(arguments) {
         if (!arguments) {
@@ -16,5 +16,5 @@ function ff(argument) {
     };
     return innerFunction
 }
-console.log(ff(2, 5, 6));
-console.log(ff(2)(5)(6)());
+console.log(countArguments(2, 5, 6));
+console.log(countArguments(2)(5)(6)());
