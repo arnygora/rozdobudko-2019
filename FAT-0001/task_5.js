@@ -13,7 +13,8 @@ const checkWordOnSameLetters = (string) => {
     let newArrayFromcharcodes = charCodesFromLetters.map(item => item.sort().join(''));
     console.log(newArrayFromcharcodes);
     return newArrayFromcharcodes.every((item, index, array) => {
-        return (+array[index] === +array[index - 1])  // не працює
+        // fixme не працює метод every(), чого - хз
+        return (+array[index] === +array[index - 1])
     });
 };
 console.log(checkWordOnSameLetters(string2));
