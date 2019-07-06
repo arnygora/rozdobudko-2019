@@ -1,11 +1,3 @@
-// export function fakeData() {
-//     const url = 'http://5d1c882df31e7f00147eb84f.mockapi.io/objectsWithData';
-//     return fetch(url)
-//         .then(response => response.json())
-//         .then(data => console.table(data))
-//         .catch(new Error('error, data wasn\'t loaded' ))
-// }
-// fakeData();
 // 4.  Есть массив в котором лежат объекты с датами, отсортировать по датам
 const data = [
     {
@@ -125,7 +117,7 @@ function getSortedArray(data) {
     return data.sort((a, b) => formatDateToMilliseconds(a.born) > formatDateToMilliseconds(b.born) ? 1 : -1);
 }
 
-let result = getSortedArray(data);
+const result = getSortedArray(data);
 console.log(result);
 
 

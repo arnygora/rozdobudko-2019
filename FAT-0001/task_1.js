@@ -2,22 +2,7 @@
 const string1 = '(2).plus(3).minus(1)';
 
 const makeStringMathExpression = (string) => {
-    // const operandsArray = [];
-    // const operatorArray = [];
-    // string.split(')').map(item => {
-    //     item.split('').map(item => {
-    //         if (Number(item)) {
-    //             operandsArray.push(+item);
-    //         } else if (item.charCodeAt() !== 46) {
-    //             operatorArray.push(item);
-    //         }
-    //     })
-    // });
-    // console.log(operandsArray);
-
-    function makeOperator(word) {
-        // let sign = operatorArray.join('').split('(');
-        // for (let operator of sign) {
+       function makeOperator(word) {
         switch (word) {
             case 'plus':
                 return '+';

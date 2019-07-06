@@ -1,21 +1,21 @@
 // 5.  Есть несколько слов, определить состоят ли они из одних и тех же букв('кот', 'ток', 'окт')
-const string2 = 'kot, tok, okt';
+const stringData = 'kot, tok, okt';
 
-// fixme solid "S"
+const getArrayFromString = (string) => string.split(',').map(item => item.trim());
+
+const getCharCodesFromValues = (array) => array.map(word => {
+    return word.split('').map((letter, index, array) => letter.charCodeAt(array[index]));
+});
+
 const checkWordOnSameLetters = (string) => {
-    let arrayFromString = string.split(',').map(item => item.trim());
+    const arrayFromString = getArrayFromString(string);
 
-    let charCodesFromLetters = arrayFromString.map(word => {
-        return word.split('').map((letter, index, array) => {
-            return letter.charCodeAt(array[index])
-        })
-    });
+    const charCodes = getCharCodesFromValues(arrayFromString);
 
-    let newArrayFromcharcodes = charCodesFromLetters.map(item => item.sort().join(''));
-    console.log(newArrayFromcharcodes);
-    return newArrayFromcharcodes.every((item, index, array) => {
-        // fixme не працює метод every(), чого - хз
-        return (+array[index] === +array[index - 1])
-    });
+    const sortedArrayFromcharcodes = charCodes.map(item => item.sort().join(''));
+    // console.log(sortedArrayFromcharcodes);
+    return sortedArrayFromcharcodes.every((item, index, array) => +array[index] === +array[index - 1]);
+
+    // fixme не працює метод every(), повинно вертати true
 };
-console.log(checkWordOnSameLetters(string2));
+console.log(checkWordOnSameLetters(stringData));

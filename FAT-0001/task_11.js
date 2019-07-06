@@ -1,9 +1,9 @@
 // 11.  Реализовать cортировку пузырьком
 
-let simpleArr = [55, 9, 7, 3, 64, 8798, 646, 6, 4, 8];
+const simpleArr = [55, 9, 7, 3, 64, 8798, 646, 6, 4, 8];
 
 const bubble = (inputArray) => {
-    const get = function recursion(array) {
+    const getSortedArray = function recursion(array) {
         array.map((item, index, array) => {
             if (array[index] > array[index + 1]) {
                 let temp = array[index];
@@ -16,7 +16,7 @@ const bubble = (inputArray) => {
         });
         return array
     };
-    return get(inputArray)
+    return getSortedArray(inputArray)
 };
 
 console.log(bubble(simpleArr));

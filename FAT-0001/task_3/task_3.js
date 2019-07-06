@@ -1,19 +1,17 @@
-import { graph } from './tree.js'
+// 3. Дано дерево, надо найти сумму всех вершин
+import {graph} from './tree.js'
 
-const countPicks = (graph) => {
-    const arrayPicksValues = [];
+const countValues = (data) => data.reduce((accumulator, nextValue) => accumulator + nextValue);
+
+const countTreeTops = (graph) => {
+    const treeTopsValues = [];
     const tree = [graph];
-    const get = function getTopValuesOnly(tree) {
-        tree.map(item => {
-            if (item.children) {
-                return getTopValuesOnly(item.children)
-            } else {
-                return arrayPicksValues.push(item.value);
-            }
-        });
-        // fixme solid "S"
-        return arrayPicksValues.reduce((accumulator, nextValue) => accumulator + nextValue);
+    const getTreeTops = function getValues(tree) {
+        tree.map(item => item.children
+                         ? getValues(item.children)
+                         : treeTopsValues.push(item.value));
+        return countValues(treeTopsValues);
     };
-    return get(tree);
+    return getTreeTops(tree);
 };
-console.log(countPicks(graph));
+console.log(countTreeTops(graph));
