@@ -1,6 +1,7 @@
 // 5.  Есть несколько слов, определить состоят ли они из одних и тех же букв('кот', 'ток', 'окт')
 const string2 = 'kot, tok, okt';
 
+// fixme solid "S"
 const checkWordOnSameLetters = (string) => {
     let arrayFromString = string.split(',').map(item => item.trim());
 

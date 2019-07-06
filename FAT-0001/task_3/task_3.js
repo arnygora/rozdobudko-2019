@@ -11,6 +11,7 @@ const countPicks = (graph) => {
                 return arrayPicksValues.push(item.value);
             }
         });
+        // fixme solid "S"
         return arrayPicksValues.reduce((accumulator, nextValue) => accumulator + nextValue);
     };
     return get(tree);
