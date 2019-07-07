@@ -1,6 +1,5 @@
 // 7.  Реализовать функцию f: f(2, 3) -> 5, при вызове f(2)(3), тоже вернет 5
 
-// fixme solid "S" // ternary operator
 function countArguments(argument) {
     if (arguments.length > 1) {
         return Array.from(arguments).reduce((accumulator, nextArgument) => accumulator + nextArgument);

@@ -1,6 +1,6 @@
 // 11.  Реализовать cортировку пузырьком
 
-const simpleArr = [55, 9, 7, 3, 64, 8798, 646, 6, 4, 8];
+const array = [55, 9, 7, 3, 64, 8798, 646, 6, 4, 8];
 
 const bubble = (inputArray) => {
     const getSortedArray = function recursion(array) {
@@ -19,4 +19,4 @@ const bubble = (inputArray) => {
     return getSortedArray(inputArray)
 };
 
-console.log(bubble(simpleArr));
+console.log(bubble(array));
